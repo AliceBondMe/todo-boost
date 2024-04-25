@@ -1,16 +1,30 @@
 {
   "files": {
-    "main.css": "/todo-boost/static/css/main.459f24f4.css",
-    "main.js": "/todo-boost/static/js/main.bc86f764.js",
-    "static/js/453.d7e9521a.chunk.js": "/todo-boost/static/js/453.d7e9521a.chunk.js",
-    "static/media/logo.svg": "/todo-boost/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.css": "/todo-boost/static/css/main.8867c3f3.css",
+    "main.js": "/todo-boost/static/js/main.0d489689.js",
+    "static/js/449.be442d6b.chunk.js": "/todo-boost/static/js/449.be442d6b.chunk.js",
+    "static/js/765.79e68e38.chunk.js": "/todo-boost/static/js/765.79e68e38.chunk.js",
+    "static/js/511.39fe6466.chunk.js": "/todo-boost/static/js/511.39fe6466.chunk.js",
+    "static/js/998.e4668d0c.chunk.js": "/todo-boost/static/js/998.e4668d0c.chunk.js",
+    "static/js/385.f0d8ecd4.chunk.js": "/todo-boost/static/js/385.f0d8ecd4.chunk.js",
+    "static/js/697.707afb6a.chunk.js": "/todo-boost/static/js/697.707afb6a.chunk.js",
+    "static/js/139.ff6a738b.chunk.js": "/todo-boost/static/js/139.ff6a738b.chunk.js",
+    "static/media/Roboto-Medium.ttf": "/todo-boost/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
+    "static/media/Roboto-Regular.ttf": "/todo-boost/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Bold.ttf": "/todo-boost/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "index.html": "/todo-boost/index.html",
-    "main.459f24f4.css.map": "/todo-boost/static/css/main.459f24f4.css.map",
-    "main.bc86f764.js.map": "/todo-boost/static/js/main.bc86f764.js.map",
-    "453.d7e9521a.chunk.js.map": "/todo-boost/static/js/453.d7e9521a.chunk.js.map"
+    "main.8867c3f3.css.map": "/todo-boost/static/css/main.8867c3f3.css.map",
+    "main.0d489689.js.map": "/todo-boost/static/js/main.0d489689.js.map",
+    "449.be442d6b.chunk.js.map": "/todo-boost/static/js/449.be442d6b.chunk.js.map",
+    "765.79e68e38.chunk.js.map": "/todo-boost/static/js/765.79e68e38.chunk.js.map",
+    "511.39fe6466.chunk.js.map": "/todo-boost/static/js/511.39fe6466.chunk.js.map",
+    "998.e4668d0c.chunk.js.map": "/todo-boost/static/js/998.e4668d0c.chunk.js.map",
+    "385.f0d8ecd4.chunk.js.map": "/todo-boost/static/js/385.f0d8ecd4.chunk.js.map",
+    "697.707afb6a.chunk.js.map": "/todo-boost/static/js/697.707afb6a.chunk.js.map",
+    "139.ff6a738b.chunk.js.map": "/todo-boost/static/js/139.ff6a738b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.459f24f4.css",
-    "static/js/main.bc86f764.js"
+    "static/css/main.8867c3f3.css",
+    "static/js/main.0d489689.js"
   ]
 }

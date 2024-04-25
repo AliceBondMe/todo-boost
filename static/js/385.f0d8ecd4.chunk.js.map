@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/385.f0d8ecd4.chunk.js","mappings":"iJAAA,MAIA,EAJkBA,KACTC,EAAAA,EAAAA,KAAA,MAAAC,SAAI,a","sources":["pages/TodayPage.tsx"],"sourcesContent":["const TodayPage = () => {\r\n  return <h2>TodayPage</h2>;\r\n};\r\n\r\nexport default TodayPage;\r\n"],"names":["TodayPage","_jsx","children"],"sourceRoot":""}

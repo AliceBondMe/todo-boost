@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktodo_boost=self.webpackChunktodo_boost||[]).push([[765],{765:(o,s,e)=>{e.r(s),e.d(s,{default:()=>a});var t=e(579);const a=()=>(0,t.jsx)("h2",{children:"LoginPage"})}}]);
+//# sourceMappingURL=765.79e68e38.chunk.js.map

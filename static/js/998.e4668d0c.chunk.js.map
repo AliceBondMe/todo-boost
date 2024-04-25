@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/998.e4668d0c.chunk.js","mappings":"iJAAA,MAIA,EAJqBA,KACZC,EAAAA,EAAAA,KAAA,MAAAC,SAAI,gB","sources":["pages/AllTodosPage.tsx"],"sourcesContent":["const AllTodosPage = () => {\r\n  return <h2>AllTodosPage</h2>;\r\n};\r\n\r\nexport default AllTodosPage;\r\n"],"names":["AllTodosPage","_jsx","children"],"sourceRoot":""}
