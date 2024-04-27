@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   margin: 0;
   overflow-x: hidden;
 `;

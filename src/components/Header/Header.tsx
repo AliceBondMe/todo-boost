@@ -2,12 +2,13 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectUser } from "../../redux/selectors";
 import { LogOut } from "../Auth/LogOut";
+import { HeaderStyled } from "./Header.styled";
 
 export const Header = () => {
   const { email } = useSelector(selectUser);
 
   return (
-    <header>
+    <HeaderStyled>
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="auth">Sign In</NavLink>
@@ -22,6 +23,6 @@ export const Header = () => {
           <LogOut />
         </div>
       )}
-    </header>
+    </HeaderStyled>
   );
 };
