@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktodo_boost=self.webpackChunktodo_boost||[]).push([[385],{385:(o,s,e)=>{e.r(s),e.d(s,{default:()=>a});var t=e(579);const a=()=>(0,t.jsx)("h2",{children:"TodayPage"})}}]);
-//# sourceMappingURL=385.f0d8ecd4.chunk.js.map
