@@ -2,7 +2,7 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -22,4 +22,5 @@ jobs:
         with:
           branch: gh-pages
           folder: build
-          token: ${{ secrets.REACT_APP_FIREBASE_API_KEY}}
+        env:
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
