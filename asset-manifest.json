@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todo-boost/static/css/main.8867c3f3.css",
-    "main.js": "/todo-boost/static/js/main.7d0aea27.js",
+    "main.js": "/todo-boost/static/js/main.b5bda752.js",
     "static/js/754.f653e1bf.chunk.js": "/todo-boost/static/js/754.f653e1bf.chunk.js",
     "static/js/882.c0b39e52.chunk.js": "/todo-boost/static/js/882.c0b39e52.chunk.js",
     "static/js/193.49907faa.chunk.js": "/todo-boost/static/js/193.49907faa.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/721.a987e33f.chunk.js": "/todo-boost/static/js/721.a987e33f.chunk.js",
     "static/js/899.985acad5.chunk.js": "/todo-boost/static/js/899.985acad5.chunk.js",
     "static/css/513.8ccb5915.chunk.css": "/todo-boost/static/css/513.8ccb5915.chunk.css",
-    "static/js/513.18c0c5ac.chunk.js": "/todo-boost/static/js/513.18c0c5ac.chunk.js",
+    "static/js/513.e4806916.chunk.js": "/todo-boost/static/js/513.e4806916.chunk.js",
     "static/media/work-productivity.png": "/todo-boost/static/media/work-productivity.504c3fffdb1750b5a5af.png",
     "static/media/woman-paper-calendar.png": "/todo-boost/static/media/woman-paper-calendar.0ce9aa436113dfbab8c0.png",
     "static/media/not-found.png": "/todo-boost/static/media/not-found.855a99073c21361ed371.png",
@@ -20,7 +20,7 @@
     "static/media/paper-pile.png": "/todo-boost/static/media/paper-pile.0998e75220ca0b2d0e25.png",
     "index.html": "/todo-boost/index.html",
     "main.8867c3f3.css.map": "/todo-boost/static/css/main.8867c3f3.css.map",
-    "main.7d0aea27.js.map": "/todo-boost/static/js/main.7d0aea27.js.map",
+    "main.b5bda752.js.map": "/todo-boost/static/js/main.b5bda752.js.map",
     "754.f653e1bf.chunk.js.map": "/todo-boost/static/js/754.f653e1bf.chunk.js.map",
     "882.c0b39e52.chunk.js.map": "/todo-boost/static/js/882.c0b39e52.chunk.js.map",
     "193.49907faa.chunk.js.map": "/todo-boost/static/js/193.49907faa.chunk.js.map",
@@ -29,10 +29,10 @@
     "721.a987e33f.chunk.js.map": "/todo-boost/static/js/721.a987e33f.chunk.js.map",
     "899.985acad5.chunk.js.map": "/todo-boost/static/js/899.985acad5.chunk.js.map",
     "513.8ccb5915.chunk.css.map": "/todo-boost/static/css/513.8ccb5915.chunk.css.map",
-    "513.18c0c5ac.chunk.js.map": "/todo-boost/static/js/513.18c0c5ac.chunk.js.map"
+    "513.e4806916.chunk.js.map": "/todo-boost/static/js/513.e4806916.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8867c3f3.css",
-    "static/js/main.7d0aea27.js"
+    "static/js/main.b5bda752.js"
   ]
 }
