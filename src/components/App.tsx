@@ -1,7 +1,9 @@
-import React, { lazy } from "react";
+import { lazy } from "react";
 import { Route, Routes } from "react-router";
 import Layout from "./Layout/Layout";
 import { GlobalStyle } from "../assets/styles/GlobalStyles";
+import { RestrictedRoute } from "../routes/RestrictedRoute";
+import { PrivateRoute } from "../routes/PrivateRoute";
 
 const AuthPage = lazy(() => import("../pages/AuthPage"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -16,10 +18,26 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/all" element={<AllTodosPage />} />
-          <Route path="/active" element={<ActivePage />} />
-          <Route path="/completed" element={<CompletedPage />} />
+          <Route
+            path="/auth"
+            element={<RestrictedRoute redirectTo="/all" component={AuthPage} />}
+          />
+          <Route
+            path="/all"
+            element={
+              <PrivateRoute component={AllTodosPage} redirectTo="/auth" />
+            }
+          />
+          <Route
+            path="/active"
+            element={<PrivateRoute component={ActivePage} redirectTo="/auth" />}
+          />
+          <Route
+            path="/completed"
+            element={
+              <PrivateRoute component={CompletedPage} redirectTo="/auth" />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

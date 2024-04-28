@@ -1,55 +1,30 @@
-import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { FC } from "react";
-import * as yup from "yup";
-import { db } from "../firebase";
-import { useSelector } from "react-redux";
-import { selectUser } from "../redux/selectors";
-import { addDoc, collection } from "firebase/firestore";
+import "react-datepicker/dist/react-datepicker.css";
+import { FC, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTodos, selectUser } from "../redux/selectors";
 import { Link } from "react-router-dom";
-import { nanoid } from "@reduxjs/toolkit";
+import { fetchTodos } from "../redux/operations";
+import { AppDispatch } from "../redux/store";
+import { useShowModal } from "../hooks/useShowModal";
+import { AddTodoModal } from "../components/AddTodo/AddTodoModal";
+import { TodoCard } from "../components/TodoCard/TodoCard";
 
-export interface TodoData {
-  title: string;
-  text: string;
-  deadline: string;
+export interface Deadline {
+  seconds: number;
+  nanoseconds: number;
 }
-
-const initialValues: TodoData = {
-  title: "",
-  text: "",
-  deadline: "",
-};
-
-const validationSchema = yup.object().shape({
-  title: yup
-    .string()
-    .min(3)
-    .max(100)
-    .required("A Title for new task is required"),
-  deadline: yup.string().required("Deadline for new task is required"),
-  text: yup.string().max(500),
-});
 
 const AllTodosPage: FC = () => {
   const { id } = useSelector(selectUser);
+  const todos = useSelector(selectTodos);
+  const dispatch: AppDispatch = useDispatch();
+  const { isShowModal, openModal, closeModal } = useShowModal();
 
-  const handleSubmit = async (
-    todoData: TodoData,
-    { resetForm }: FormikHelpers<TodoData>
-  ) => {
-    try {
-      const userTodosRef = collection(db, `users/${id}/todos`);
-      await addDoc(userTodosRef, {
-        ...todoData,
-        completed: false,
-        id: nanoid(),
-      });
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchTodos(id));
     }
-
-    resetForm();
-  };
+  }, [dispatch, id]);
 
   return (
     <>
@@ -57,25 +32,24 @@ const AllTodosPage: FC = () => {
 
       {!id && <Link to="/auth">Please Sign in to create tasks</Link>}
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        <Form>
-          <Field type="text" name="title" placeholder="Title" required />
-          <Field type="text" name="text" placeholder="Description" />
-          <Field type="text" name="deadline" placeholder="Deadline" required />
+      <button type="button" onClick={openModal} disabled={!id}>
+        Add new task
+      </button>
 
-          <button type="submit" disabled={!id}>
-            Create new task
-          </button>
+      <ul>
+        {todos.map(({ id, title, text, deadline, completed }) => (
+          <TodoCard
+            key={id}
+            id={id}
+            title={title}
+            text={text}
+            deadline={deadline}
+            completed={completed}
+          />
+        ))}
+      </ul>
 
-          <ErrorMessage name="title" component="div" />
-          <ErrorMessage name="text" component="div" />
-          <ErrorMessage name="deadline" component="div" />
-        </Form>
-      </Formik>
+      {isShowModal && <AddTodoModal closeModal={closeModal} />}
     </>
   );
 };

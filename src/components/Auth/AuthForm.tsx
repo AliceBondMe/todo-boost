@@ -9,6 +9,7 @@ import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/authSlice";
 import { doc, setDoc } from "firebase/firestore";
+import { AppDispatch } from "../../redux/store";
 
 export interface UserAuthData {
   email: string;
@@ -27,13 +28,13 @@ const validationSchema = yup.object().shape({
     .required("An email is required"),
   password: yup
     .string()
-    .min(8, "Password must contain 8 or more characters")
+    .min(5, "Password must contain 5 or more characters")
     .required("A password is required"),
 });
 
 export const AuthForm: FC<{ isLogin: boolean }> = ({ isLogin }) => {
   const [isError, setIsError] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleSubmit = async (
     { email, password }: UserAuthData,

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface authState {
+export interface AuthState {
   user: {
     id: string | null;
     email: string | null;
@@ -9,7 +9,7 @@ export interface authState {
   isLoggedIn: boolean;
 }
 
-const authInitialState: authState = {
+const authInitialState: AuthState = {
   user: { id: null, email: null },
   token: null,
   isLoggedIn: false,

@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --bg-main: '#ffffff';
         --text-main: '#101828';
+        --backdrop: rgba(17, 18, 19, 0.40);
         --transition-main: 300ms ease-in-out;
         
     }

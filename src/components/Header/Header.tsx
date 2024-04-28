@@ -11,10 +11,14 @@ export const Header = () => {
     <HeaderStyled>
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="auth">Sign In</NavLink>
-        <NavLink to="all">All ToDos</NavLink>
-        <NavLink to="active">Active</NavLink>
-        <NavLink to="completed">Completed</NavLink>
+        {!email && <NavLink to="auth">Sign In</NavLink>}
+        {email && (
+          <>
+            <NavLink to="all">All ToDos</NavLink>
+            <NavLink to="active">Active</NavLink>
+            <NavLink to="completed">Completed</NavLink>
+          </>
+        )}
       </nav>
 
       {email && (
