@@ -1,32 +1,34 @@
 {
   "files": {
     "main.css": "/todo-boost/static/css/main.8867c3f3.css",
-    "main.js": "/todo-boost/static/js/main.3d1ff2a9.js",
+    "main.js": "/todo-boost/static/js/main.f745a1d3.js",
     "static/js/315.28d214d2.chunk.js": "/todo-boost/static/js/315.28d214d2.chunk.js",
     "static/js/511.ae747f73.chunk.js": "/todo-boost/static/js/511.ae747f73.chunk.js",
-    "static/js/818.80b82d3f.chunk.js": "/todo-boost/static/js/818.80b82d3f.chunk.js",
-    "static/js/96.9dfaadc5.chunk.js": "/todo-boost/static/js/96.9dfaadc5.chunk.js",
-    "static/js/697.cf544e05.chunk.js": "/todo-boost/static/js/697.cf544e05.chunk.js",
+    "static/js/998.6f0ed3a0.chunk.js": "/todo-boost/static/js/998.6f0ed3a0.chunk.js",
+    "static/js/96.9100ae18.chunk.js": "/todo-boost/static/js/96.9100ae18.chunk.js",
+    "static/js/697.a6a658f6.chunk.js": "/todo-boost/static/js/697.a6a658f6.chunk.js",
     "static/js/139.ad3ef35d.chunk.js": "/todo-boost/static/js/139.ad3ef35d.chunk.js",
     "static/js/150.9b2df49c.chunk.js": "/todo-boost/static/js/150.9b2df49c.chunk.js",
-    "static/css/688.1ffdf7f1.chunk.css": "/todo-boost/static/css/688.1ffdf7f1.chunk.css",
+    "static/css/992.a1b53edf.chunk.css": "/todo-boost/static/css/992.a1b53edf.chunk.css",
+    "static/js/992.35b46aff.chunk.js": "/todo-boost/static/js/992.35b46aff.chunk.js",
     "static/media/Roboto-Medium.ttf": "/todo-boost/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/todo-boost/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/todo-boost/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "index.html": "/todo-boost/index.html",
     "main.8867c3f3.css.map": "/todo-boost/static/css/main.8867c3f3.css.map",
-    "main.3d1ff2a9.js.map": "/todo-boost/static/js/main.3d1ff2a9.js.map",
+    "main.f745a1d3.js.map": "/todo-boost/static/js/main.f745a1d3.js.map",
     "315.28d214d2.chunk.js.map": "/todo-boost/static/js/315.28d214d2.chunk.js.map",
     "511.ae747f73.chunk.js.map": "/todo-boost/static/js/511.ae747f73.chunk.js.map",
-    "818.80b82d3f.chunk.js.map": "/todo-boost/static/js/818.80b82d3f.chunk.js.map",
-    "96.9dfaadc5.chunk.js.map": "/todo-boost/static/js/96.9dfaadc5.chunk.js.map",
-    "697.cf544e05.chunk.js.map": "/todo-boost/static/js/697.cf544e05.chunk.js.map",
+    "998.6f0ed3a0.chunk.js.map": "/todo-boost/static/js/998.6f0ed3a0.chunk.js.map",
+    "96.9100ae18.chunk.js.map": "/todo-boost/static/js/96.9100ae18.chunk.js.map",
+    "697.a6a658f6.chunk.js.map": "/todo-boost/static/js/697.a6a658f6.chunk.js.map",
     "139.ad3ef35d.chunk.js.map": "/todo-boost/static/js/139.ad3ef35d.chunk.js.map",
     "150.9b2df49c.chunk.js.map": "/todo-boost/static/js/150.9b2df49c.chunk.js.map",
-    "688.1ffdf7f1.chunk.css.map": "/todo-boost/static/css/688.1ffdf7f1.chunk.css.map"
+    "992.a1b53edf.chunk.css.map": "/todo-boost/static/css/992.a1b53edf.chunk.css.map",
+    "992.35b46aff.chunk.js.map": "/todo-boost/static/js/992.35b46aff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8867c3f3.css",
-    "static/js/main.3d1ff2a9.js"
+    "static/js/main.f745a1d3.js"
   ]
 }
