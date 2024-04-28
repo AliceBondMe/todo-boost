@@ -4,16 +4,17 @@ import { Backdrop } from "./AddTodoModal.styled";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import * as yup from "yup";
-import { db } from "../../firebase";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
-import { addDoc, collection } from "firebase/firestore";
 import { nanoid } from "@reduxjs/toolkit";
 import ReactDatePicker from "react-datepicker";
+import { AppDispatch } from "../../redux/store";
+import { addTodo, editTodo } from "../../redux/operations";
+import { formatDate, formatDateToObject } from "../../helpers/formatDate";
 
 const modalRoot = document.querySelector("#modal-root") as HTMLElement;
 
-export interface TodoData {
+export interface TodoDataOut {
   title: string;
   text: string;
   deadline: Date | undefined;
@@ -21,13 +22,12 @@ export interface TodoData {
 
 interface AddTodoModalProps {
   closeModal: () => void;
+  isEdit?: boolean;
+  todoId?: string;
+  title?: string;
+  text?: string;
+  deadline?: string;
 }
-
-const initialValues: TodoData = {
-  title: "",
-  text: "",
-  deadline: undefined,
-};
 
 const validationSchema = yup.object().shape({
   title: yup
@@ -39,8 +39,16 @@ const validationSchema = yup.object().shape({
   text: yup.string().max(500),
 });
 
-export const AddTodoModal: FC<AddTodoModalProps> = ({ closeModal }) => {
-  const { id } = useSelector(selectUser);
+export const AddTodoModal: FC<AddTodoModalProps> = ({
+  closeModal,
+  isEdit = false,
+  todoId,
+  title,
+  text,
+  deadline,
+}) => {
+  const dispatch: AppDispatch = useDispatch();
+  const { id: userId } = useSelector(selectUser);
 
   const handleBackdropClose = (e: SyntheticEvent) => {
     if (e.target === e.currentTarget) {
@@ -61,19 +69,26 @@ export const AddTodoModal: FC<AddTodoModalProps> = ({ closeModal }) => {
     };
   }, [closeModal]);
 
-  const handleSubmit = async (todoData: TodoData) => {
-    try {
-      const userTodosRef = collection(db, `users/${id}/todos`);
-      await addDoc(userTodosRef, {
+  const handleSubmit = async (todoData: TodoDataOut) => {
+    const todoPayload = {
+      userId,
+      todo: {
         ...todoData,
+        deadline: formatDate(todoData.deadline),
         completed: false,
-        id: nanoid(),
-      });
-    } catch (error) {
-      console.log(error);
-    }
+        id: isEdit ? (todoId as string) : nanoid(),
+      },
+    };
+
+    isEdit ? dispatch(editTodo(todoPayload)) : dispatch(addTodo(todoPayload));
 
     closeModal();
+  };
+
+  const initialValues: TodoDataOut = {
+    title: isEdit ? (title as string) : "",
+    text: isEdit ? (text as string) : "",
+    deadline: isEdit ? formatDateToObject(deadline) : undefined,
   };
 
   return createPortal(
@@ -105,7 +120,9 @@ export const AddTodoModal: FC<AddTodoModalProps> = ({ closeModal }) => {
               required
             />
 
-            <button type="submit">Create new task</button>
+            <button type="submit">
+              {isEdit ? "Edit task" : "Create new task"}
+            </button>
 
             <ErrorMessage name="title" component="div" />
             <ErrorMessage name="text" component="div" />

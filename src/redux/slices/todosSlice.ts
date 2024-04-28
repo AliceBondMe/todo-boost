@@ -1,12 +1,17 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { fetchTodos } from "../operations";
-import { Deadline } from "../../pages/AllTodosPage";
+import {
+  addTodo,
+  deleteTodo,
+  editTodo,
+  editTodoStatus,
+  fetchTodos,
+} from "../operations";
 
 export interface TodoData {
   id: string;
   title: string;
   text: string;
-  deadline: Deadline;
+  deadline: string;
   completed: boolean;
 }
 
@@ -25,23 +30,7 @@ const todosInitialState: TodosState = {
 const todosSlice = createSlice({
   name: "todos",
   initialState: todosInitialState,
-  reducers: {
-    // fetchTodos(state, action) {
-    //   state.todos = action.payload;
-    // },
-    addTodo(state, action) {
-      state.todos.push(action.payload);
-    },
-    editTodo(state, action) {
-      const editedTodoIndex = state.todos.findIndex(
-        ({ id }) => id === action.payload.id
-      );
-      state.todos[editedTodoIndex] = action.payload;
-    },
-    deleteTodo(state, action) {
-      state.todos = state.todos.filter(({ id }) => id !== action.payload.id);
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchTodos.fulfilled, (state, action: PayloadAction<any>) => {
@@ -55,10 +44,65 @@ const todosSlice = createSlice({
       .addCase(fetchTodos.rejected, (state, action: PayloadAction<any>) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(addTodo.fulfilled, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = null;
+        state.todos.push(action.payload);
+      })
+      .addCase(addTodo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addTodo.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(editTodo.fulfilled, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = null;
+        const editedTodoIndex = state.todos.findIndex(
+          ({ id }) => id === action.payload.id
+        );
+        state.todos[editedTodoIndex] = action.payload;
+      })
+      .addCase(editTodo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editTodo.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(
+        editTodoStatus.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          state.isLoading = false;
+          state.error = null;
+          const editedTodoIndex = state.todos.findIndex(
+            ({ id }) => id === action.payload.id
+          );
+          state.todos[editedTodoIndex].completed = action.payload.completed;
+        }
+      )
+      .addCase(editTodoStatus.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editTodoStatus.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteTodo.fulfilled, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = null;
+        state.todos = state.todos.filter(({ id }) => id !== action.payload);
+      })
+      .addCase(deleteTodo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTodo.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
-
-export const { addTodo, editTodo, deleteTodo } = todosSlice.actions;
 
 export const todosReducer = todosSlice.reducer;
