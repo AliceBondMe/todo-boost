@@ -1,16 +1,24 @@
 import { FC, SyntheticEvent, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { Backdrop } from "./AddTodoModal.styled";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import {
+  Backdrop,
+  DatePickerStyled,
+  ErrorMessageStyled,
+  FieldStyled,
+  FormStyled,
+  ModalContainer,
+} from "./AddTodoModal.styled";
+import { Formik } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import { nanoid } from "@reduxjs/toolkit";
-import ReactDatePicker from "react-datepicker";
 import { AppDispatch } from "../../redux/store";
 import { addTodo, editTodo } from "../../redux/operations";
 import { formatDate, formatDateToObject } from "../../helpers/formatDate";
+import { IoClose } from "react-icons/io5";
+import { ActionButton } from "../TodoCard/TodoCard.styled";
 
 const modalRoot = document.querySelector("#modal-root") as HTMLElement;
 
@@ -93,43 +101,56 @@ export const AddTodoModal: FC<AddTodoModalProps> = ({
 
   return createPortal(
     <Backdrop onClick={handleBackdropClose}>
-      <button
-        type="button"
-        aria-label="close modal window"
-        onClick={closeModal}
-      >
-        x
-      </button>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ setFieldValue, values }) => (
-          <Form>
-            <Field type="text" name="title" placeholder="Title" required />
-            <Field type="text" name="text" placeholder="Description" />
-            <ReactDatePicker
-              name="deadline"
-              placeholderText="Deadline"
-              selected={values.deadline}
-              onChange={(date) => setFieldValue("deadline", date)}
-              autoComplete="off"
-              dateFormat="dd/MM/yyyy"
-              calendarStartDay={1}
-              required
-            />
+      <ModalContainer>
+        <button
+          type="button"
+          aria-label="close modal window"
+          onClick={closeModal}
+        >
+          <IoClose size={28} />
+        </button>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ setFieldValue, values, handleChange }) => (
+            <FormStyled>
+              <FieldStyled
+                type="text"
+                name="title"
+                placeholder="Title"
+                required
+              />
+              <FieldStyled
+                as="textarea"
+                type="text"
+                name="text"
+                placeholder="Description"
+                onChange={handleChange}
+              />
+              <DatePickerStyled
+                name="deadline"
+                placeholderText="Deadline"
+                selected={values.deadline}
+                onChange={(date) => setFieldValue("deadline", date)}
+                autoComplete="off"
+                dateFormat="dd/MM/yyyy"
+                calendarStartDay={1}
+                required
+              />
 
-            <button type="submit">
-              {isEdit ? "Edit task" : "Create new task"}
-            </button>
+              <ActionButton type="submit">
+                {isEdit ? "Edit task" : "Create new task"}
+              </ActionButton>
 
-            <ErrorMessage name="title" component="div" />
-            <ErrorMessage name="text" component="div" />
-            <ErrorMessage name="deadline" component="div" />
-          </Form>
-        )}
-      </Formik>
+              <ErrorMessageStyled name="title" component="div" />
+              <ErrorMessageStyled name="text" component="div" />
+              <ErrorMessageStyled name="deadline" component="div" />
+            </FormStyled>
+          )}
+        </Formik>
+      </ModalContainer>
     </Backdrop>,
     modalRoot
   );

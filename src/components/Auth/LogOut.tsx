@@ -3,6 +3,7 @@ import { auth } from "../../firebase";
 import { FC } from "react";
 import { signOut } from "firebase/auth";
 import { logout } from "../../redux/slices/authSlice";
+import { Button } from "./Auth.styled";
 
 export const LogOut: FC = () => {
   const dispatch = useDispatch();
@@ -18,8 +19,8 @@ export const LogOut: FC = () => {
   };
 
   return (
-    <button type="button" onClick={handleLogOut}>
+    <Button type="button" onClick={handleLogOut}>
       Log Out
-    </button>
+    </Button>
   );
 };

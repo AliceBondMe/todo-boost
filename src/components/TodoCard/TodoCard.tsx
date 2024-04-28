@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { deleteTodo, editTodoStatus } from "../../redux/operations";
 import { selectUser } from "../../redux/selectors";
+import { ActionButton, Card, TitleBlock } from "./TodoCard.styled";
 
 export const TodoCard: FC<TodoData> = ({
   id,
@@ -37,29 +38,34 @@ export const TodoCard: FC<TodoData> = ({
 
   return (
     <>
-      <li>
-        <h6>{title}</h6>
-        <p>{text}</p>
-        <p>{deadline}</p>
-        <p>{isCompleted ? "completed" : "active"}</p>
-        <button
-          type="button"
-          aria-label="toggle complete task"
-          onClick={handleComplete}
-        >
-          {isCompleted ? (
-            <MdOutlineCheckBox />
-          ) : (
-            <MdOutlineCheckBoxOutlineBlank />
-          )}
-        </button>
-        <button type="button" onClick={openModal}>
-          Edit task
-        </button>
-        <button type="button" onClick={handleDelete}>
-          Delete task
-        </button>
-      </li>
+      <Card $isCompleted={isCompleted}>
+        <TitleBlock>
+          <h6>{title}</h6>
+          <button
+            type="button"
+            aria-label="toggle complete task"
+            onClick={handleComplete}
+          >
+            {isCompleted ? (
+              <MdOutlineCheckBox size={32} />
+            ) : (
+              <MdOutlineCheckBoxOutlineBlank size={32} />
+            )}
+          </button>
+        </TitleBlock>
+
+        <p className="text">{text}</p>
+        <p className="deadline">{deadline}</p>
+
+        <div>
+          <ActionButton type="button" onClick={openModal}>
+            Edit task
+          </ActionButton>
+          <ActionButton type="button" onClick={handleDelete}>
+            Delete task
+          </ActionButton>
+        </div>
+      </Card>
 
       {isShowModal && (
         <AddTodoModal

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
+import { ErrorMessage, Formik, FormikHelpers } from "formik";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,6 +10,13 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/authSlice";
 import { doc, setDoc } from "firebase/firestore";
 import { AppDispatch } from "../../redux/store";
+import {
+  Button,
+  ErrorsBlock,
+  FieldStyled,
+  FormStyled,
+  Header,
+} from "./Auth.styled";
 
 export interface UserAuthData {
   email: string;
@@ -71,32 +78,34 @@ export const AuthForm: FC<{ isLogin: boolean }> = ({ isLogin }) => {
   };
 
   return (
-    <div>
-      <h2>{isLogin ? "Sign in now" : "Sign up now"}</h2>
+    <>
+      <Header>{isLogin ? "Sign in now" : "Sign up now"}</Header>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <Field type="email" name="email" placeholder="Email" required />
-          <Field
+        <FormStyled>
+          <FieldStyled type="email" name="email" placeholder="Email" required />
+          <FieldStyled
             type="password"
             name="password"
             placeholder="Password"
             required
           />
 
-          <button type="submit">{isLogin ? "Log in" : "Register"}</button>
+          <Button type="submit">{isLogin ? "Log in" : "Register"}</Button>
 
-          <ErrorMessage name="email" component="div" />
-          <ErrorMessage name="password" component="div" />
-        </Form>
+          <ErrorsBlock>
+            <ErrorMessage name="email" component="div" />
+            <ErrorMessage name="password" component="div" />
+          </ErrorsBlock>
+        </FormStyled>
       </Formik>
 
       {isError && (
         <p>Something went wrong with your authentification. Please try again</p>
       )}
-    </div>
+    </>
   );
 };

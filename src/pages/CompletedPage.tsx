@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useSelector } from "react-redux";
 import { selectCompletedTodos } from "../redux/selectors";
 import { TodoList } from "../components/TodoList/TodoList";
+import { Header } from "./Pages.styled";
 
 const CompletedPage: FC = () => {
   const todos = useSelector(selectCompletedTodos);
@@ -12,7 +13,7 @@ const CompletedPage: FC = () => {
         <p>You have no completed tasks yet</p>
       ) : (
         <>
-          <h2>Here are all of your completed tasks:</h2>
+          <Header>Here are all of your completed tasks:</Header>
           <TodoList todos={todos} />
         </>
       )}

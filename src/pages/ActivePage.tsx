@@ -3,6 +3,7 @@ import { selectActiveTodos } from "../redux/selectors";
 import { FC } from "react";
 import { AddTodoBlock } from "../components/AddTodo/AddTodoBlock";
 import { TodoList } from "../components/TodoList/TodoList";
+import { Header } from "./Pages.styled";
 
 const ActivePage: FC = () => {
   const todos = useSelector(selectActiveTodos);
@@ -15,7 +16,7 @@ const ActivePage: FC = () => {
         <p>You have no active tasks yet</p>
       ) : (
         <>
-          <h2>Here are all of your active tasks:</h2>
+          <Header>Here are all of your active tasks:</Header>
           <TodoList todos={todos} />
         </>
       )}

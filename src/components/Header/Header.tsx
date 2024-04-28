@@ -2,14 +2,20 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectUser } from "../../redux/selectors";
 import { LogOut } from "../Auth/LogOut";
-import { HeaderStyled } from "./Header.styled";
+import { HeaderStyled, Logo, Navigation, UserBlock } from "./Header.styled";
+import { BiSolidCalendarCheck } from "react-icons/bi";
+import { FaUserNinja } from "react-icons/fa";
 
 export const Header = () => {
   const { email } = useSelector(selectUser);
 
   return (
     <HeaderStyled>
-      <nav>
+      <Logo>
+        <BiSolidCalendarCheck size={36} />
+        TODO-Boost
+      </Logo>
+      <Navigation>
         <NavLink to="/">Home</NavLink>
         {!email && <NavLink to="auth">Sign In</NavLink>}
         {email && (
@@ -19,13 +25,15 @@ export const Header = () => {
             <NavLink to="completed">Completed</NavLink>
           </>
         )}
-      </nav>
+      </Navigation>
 
       {email && (
-        <div>
-          <p>{email}</p>
+        <UserBlock>
+          <p>
+            <FaUserNinja size={22} /> {email}
+          </p>
           <LogOut />
-        </div>
+        </UserBlock>
       )}
     </HeaderStyled>
   );

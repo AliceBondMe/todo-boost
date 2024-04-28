@@ -2,10 +2,18 @@ import { createGlobalStyle, keyframes } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --bg-main: '#ffffff';
-        --text-main: '#101828';
-        --backdrop: rgba(17, 18, 19, 0.40);
-        --transition-main: 300ms ease-in-out;
+      --bg-main: #F3F3F3;
+      --bg-accent: #bc3230;
+      --bg-accent-dark: #a3110e;
+      --bg-accent-light: #f7c4c3;
+      --bg-accent-lighter: #f6d7d7;
+      --bg-grey: #d7d7d7;
+      --text-main:#11101C;
+      --text-white:#ffffff;
+      --border-main: rgba(251, 251, 251, 0.40);
+      --border-hover: #FFFFFF;
+      --backdrop: rgba(17, 18, 19, 0.40);
+      --transition-main: 300ms ease-in-out;
         
     }
 

@@ -6,6 +6,7 @@ import { fetchTodos } from "../redux/operations";
 import { AppDispatch } from "../redux/store";
 import { TodoList } from "../components/TodoList/TodoList";
 import { AddTodoBlock } from "../components/AddTodo/AddTodoBlock";
+import { Header } from "./Pages.styled";
 
 const AllTodosPage: FC = () => {
   const { id } = useSelector(selectUser);
@@ -26,7 +27,7 @@ const AllTodosPage: FC = () => {
         <p>You have no tasks yet</p>
       ) : (
         <>
-          <h2>Here are all of your tasks:</h2>
+          <Header>Here are all of your tasks:</Header>
           <TodoList todos={todos} />
         </>
       )}

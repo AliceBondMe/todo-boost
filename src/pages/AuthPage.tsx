@@ -1,5 +1,7 @@
 import { AuthForm } from "../components/Auth/AuthForm";
 import { useState } from "react";
+import womanImage from "../assets/images/woman-paper-calendar.png";
+import { Container, MessageBlock } from "./Pages.styled";
 
 const RegisterPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,15 +11,18 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      <AuthForm isLogin={isLogin} />
+    <Container>
+      <img src={womanImage} alt="Woman with schedule" />
       <div>
-        <p>{isLogin ? "Not registered?" : "Already have an account?"}</p>
-        <button onClick={toggleAuthType}>
-          {isLogin ? "Sign up" : "Sign in"}
-        </button>
+        <AuthForm isLogin={isLogin} />
+        <MessageBlock>
+          <p>{isLogin ? "Not registered?" : "Already have an account?"}</p>
+          <button onClick={toggleAuthType}>
+            {isLogin ? "Sign up" : "Sign in"}
+          </button>
+        </MessageBlock>
       </div>
-    </>
+    </Container>
   );
 };
 
