@@ -1,9 +1,14 @@
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import { Route, Routes } from "react-router";
 import Layout from "./Layout/Layout";
 import { GlobalStyle } from "../assets/styles/GlobalStyles";
 import { RestrictedRoute } from "../routes/RestrictedRoute";
 import { PrivateRoute } from "../routes/PrivateRoute";
+import { AppDispatch } from "../redux/store";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
+import { useDispatch } from "react-redux";
+import { refresh } from "../redux/slices/authSlice";
 
 const AuthPage = lazy(() => import("../pages/AuthPage"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -13,6 +18,18 @@ const CompletedPage = lazy(() => import("../pages/CompletedPage"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 function App() {
+  const dispatch: AppDispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const id = user.uid;
+        const email = user.email;
+        dispatch(refresh({ email, id }));
+      }
+    });
+  }, [dispatch]);
+
   return (
     <>
       <Routes>
